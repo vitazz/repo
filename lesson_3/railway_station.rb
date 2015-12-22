@@ -1,8 +1,9 @@
 class RailwayStation
-  attr_reader :name, :trains
+  attr_reader :name, :trains, :train_type
 
   def initialize(name)
     @name = name
+    @train_type = train_type
     @trains = []
   end
 
@@ -20,15 +21,15 @@ class RailwayStation
     puts "Cargo count is: #{cargo_count}, Passenger count is: #{passenger_count}"
   end
 
-  def send_train
-    train = @trains.delete_at(0) if @trains.any?
-    train.next_station
+  def send_train(train)
+    sendentrain = @trains.delete(train) if @trains.any?
+    sendentrain.next_station
   end
 
-  def to_s
+  def to_s(train_type)
     puts "On station #{@name} there are trains:"
     @trains.each do |train|
-      puts train
+      puts train if train.train_type == train_type
     end
   end
 end

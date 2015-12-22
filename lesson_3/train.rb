@@ -68,3 +68,6 @@ class Train
     "Previous station is #{@current_station.name}"
   end
 end
+
+
+
