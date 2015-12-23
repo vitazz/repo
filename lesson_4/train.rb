@@ -31,10 +31,12 @@ class Train
   end
 
   def add_vagon(vagon)
-    if @speed == 0
-      @vagons_count += 1
-    else
-      'Before add a vagon train should stop'
+    if vagon.class == train.class
+      if @speed == 0
+        @vagons_count += 1
+      else
+        'Before add a vagon train should stop'
+      end
     end
   end
 
