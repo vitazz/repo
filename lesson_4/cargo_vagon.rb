@@ -1,7 +1,8 @@
 class CargoVagon
-  attr_accessor :vagon
+  attr_reader :vagon_type
 
   def initialize
+    @vagon_type = 'cargo'
   end
 
 end

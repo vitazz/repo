@@ -1,5 +1,5 @@
 class Train
-  attr_reader :train_type, :route, :vagons_count, :current_station, :vagon
+  attr_reader :train_type, :route, :vagons_count, :current_station, :vagon, :vagon_type
   attr_accessor :speed
 
   def initialize(type, count)
@@ -31,12 +31,14 @@ class Train
   end
 
   def add_vagon(vagon)
-    if vagon.class == train.class
+    if train_type == vagon.vagon_type
       if @speed == 0
         @vagons_count += 1
       else
         'Before add a vagon train should stop'
       end
+    else
+      'wrong type'
     end
   end
 

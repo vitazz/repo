@@ -5,4 +5,9 @@ require_relative 'cargo_vagon'
 
 class CargoTrain < Train
 
+  def initialize(type, count)
+    super
+    @train_type = 'cargo'
+  end
+
 end
