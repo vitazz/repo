@@ -31,11 +31,10 @@ class Train
 
   def increase_speed
     @speed += 10
-    # 'Speed increased by 10'
   end
 
   def current_speed
-    "Current speed is #{@speed}"
+    @speed
   end
 
   def stop
@@ -47,14 +46,13 @@ class Train
   end
 
   def add_vagon(vagon)
-    validate!
-    # if train_type == vagon.vagon_type
+    if train_type == vagon.vagon_type
       if @speed == 0
         @vagons_count += 1
       else
         'Before add a vagon train should stop'
       end
-    # end
+    end
   end
 
   def remove_vagon
@@ -79,13 +77,13 @@ class Train
     cur_index = @route.stations.find_index(@current_station)
     @current_station = @route.stations[cur_index + 1]
     @current_station.add_train(self)
-    "Next station is #{@current_station.name}"
+    @current_station.name
   end
 
   def prev_station
     cur_index = @route.stations.find_index(@current_station)
     @current_station = @route.stations[cur_index - 1]
-    "Previous station is #{@current_station.name}"
+    @current_station.name
   end
 
   def valid?
