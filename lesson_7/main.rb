@@ -16,12 +16,10 @@ r1 = Route.new(s1, s2, s3)
 t1.add_vagon(v2)
 s1.add_train(t1)
 s2.add_train(t2)
+t1.add_vagon(v1)
 rescue RuntimeError => e
   puts e.inspect
 end
 
-def station_list
-
-
-end
-
+s1.show_list
+s1.vagons_list

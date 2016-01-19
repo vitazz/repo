@@ -42,7 +42,7 @@ class Train
   end
 
   def vagons_count
-    "Current count of vagons is #{@vagons_count}"
+    @vagons_count
   end
 
   def add_vagon(vagon)
@@ -53,6 +53,8 @@ class Train
       else
         'Before add a vagon train should stop'
       end
+    else
+      raise 'Incorrect vagon type'
     end
   end
 

@@ -14,7 +14,7 @@ class RailwayStation
   end
 
   def self.all
-    puts @@instances.inspect
+    @@instances.inspect
   end
 
   def add_train(train)
@@ -25,10 +25,13 @@ class RailwayStation
     cargo_count = 0
     passenger_count = 0
     @trains.each do |train|
-      puts train
+      # puts train
+      train
       train.train_type == 'cargo' ? cargo_count += 1 : passenger_count += 1
     end
-    puts "Cargo count is: #{cargo_count}, Passenger count is: #{passenger_count}"
+    # puts "Cargo count is: #{cargo_count}, Passenger count is: #{passenger_count}"
+    cargo_count
+    passenger_count
   end
 
   def send_train(train)
@@ -37,7 +40,7 @@ class RailwayStation
   end
 
   def to_s(train_type)
-    puts "On station #{@name} there are trains:"
+    # puts "On station #{@name} there are trains:"
     @trains.each do |train|
       puts train if train.train_type == train_type
     end
