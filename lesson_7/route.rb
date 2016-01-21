@@ -18,11 +18,11 @@ class Route
     @stations.delete(station)
   end
 
-  def to_s
-    stations.each do |station|
-      puts station
-    end
-  end
+  # def to_s
+  #   stations.each do |station|
+  #     puts station
+  #   end
+  # end
 
   protected
   def validate!

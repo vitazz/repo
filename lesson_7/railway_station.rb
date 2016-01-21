@@ -39,18 +39,13 @@ class RailwayStation
     sendentrain.next_station
   end
 
-  def to_s(train_type)
-    puts "On station #{@name} there are trains:"
-    @trains.each do |train|
-      puts train if train.train_type == train_type
-    end
-  end
+  # def to_s(train_type)
+  #   puts "On station #{@name} there are trains:"
+  #   @trains.each do |train|
+  #     puts train if train.train_type == train_type
+  #   end
+  # end
 
-  def each_train
-    @trains.each do |train|
-      yield
-    end
-  end
 
   def show_list
     @@stations.each do |a|
@@ -58,20 +53,27 @@ class RailwayStation
     end
   end
 
-  def vagons_list
-    number = 1
-    @trains.each do |train|
-      train.vagons.each do |vagon|
-        puts "Vagon number: #{number}, vagon type: #{vagon.vagon_type}"
-        number += 1
-        if vagon.class == PassangerVagon
-          puts "Free places: #{vagon.places}, ordered places: #{vagon.taken_places}"
-        else
-          puts "Free volume: #{vagon.volume}, ordered volume: #{vagon.taken_volume}"
-        end
-      end
-    end
+  def each_train(&block)
+    # @trains.each do |train|
+    #   yield
+    # end
+    @trains.each {|i| block.call(i)}
   end
+
+  # def vagons_list
+  #   number = 1
+  #   @trains.each do |train|
+  #     train.vagons.each do |vagon|
+  #       puts "Vagon number: #{number}, vagon type: #{vagon.vagon_type}"
+  #       number += 1
+  #       if vagon.class == PassangerVagon
+  #         puts "Free places: #{vagon.places}, ordered places: #{vagon.taken_places}"
+  #       else
+  #         puts "Free volume: #{vagon.volume}, ordered volume: #{vagon.taken_volume}"
+  #       end
+  #     end
+  #   end
+  # end
 
   protected
   def validate!

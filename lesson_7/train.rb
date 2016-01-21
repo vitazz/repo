@@ -10,7 +10,7 @@ class Train
   NUMBER_FORMAT = /^[a-z\d]{3}-*[a-z\d]{2}$/i
 
   def self.find(id)
-    puts @@trains[id]
+    @@trains[id]
   end
 
   def initialize(number, type, count)
@@ -54,7 +54,7 @@ class Train
         'Before add a vagon train should stop'
       end
     else
-      raise 'Incorrect vagon type'
+      # raise 'Incorrect vagon type'
     end
   end
 
@@ -95,10 +95,11 @@ class Train
     false
   end
 
-  def each_vagon
-    @vagons.each do |a|
-      yield
-    end
+  def each_vagon(&block)
+    # @vagons.each do |a|
+    #   yield
+    # end
+    @vagons.each {|i| block.call(i)}
   end
 
 

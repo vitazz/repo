@@ -17,9 +17,11 @@ t1.add_vagon(v2)
 s1.add_train(t1)
 s2.add_train(t2)
 t1.add_vagon(v1)
+t2.add_vagon(v2)
 rescue RuntimeError => e
   puts e.inspect
 end
 
-s1.show_list
-s1.vagons_list
+s1.each_train { |t| puts t.to_s}
+s1.each_train {|t| t.each_vagon {|v| puts v.to_s }}
+s2.each_train {|t| t.each_vagon {|v| puts v.to_s }}
