@@ -51,9 +51,6 @@ class RailwayStation
   end
 
   def each_train(&_block)
-    # @trains.each do |train|
-    #   yield
-    # end
     @trains.each { |i| yield i }
   end
 

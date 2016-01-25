@@ -5,28 +5,33 @@ module Validations
   end
 
   module ClassMethods
-    def validate(name, type, *args)
-
-      case type
-        when :presence
-          fail 'Empty value' if name.nil?
-        when :format
-          fail 'Wrong format' if name !~ args[0]
-        when :type
-          fail 'Wrong class' if name.class != args[0]
-      end
+    def validate(name, *args)
+      @validate_data = {}
+      @validate_data[name] = *args
+      puts @validate_data.inspect
     end
   end
 
   module InstanceMethods
     def validate!
-      fail "Type can't be nil" if @train_type.nil?
-      fail "Vagons can't be nil" if @vagons_count.nil?
-      fail 'Vagons count must be a number' if @vagons_count.class != Fixnum
-      fail 'Possible train types: cargo, passanger' if @train_type != 'cargo' && @train_type != 'passanger'
-      # fail 'Number has invalid format' if @number !~ NUMBER_FORMAT
+      self.class.instance_variable_get("@validate_data").each do |name, args|
+        @name = instance_variable_get("@#{name}")
+        @type = args.last
+        send args[0]
+      end
     end
 
+    def format
+      fail 'Wrong format' if @name !~ @type
+    end
+
+    def presence
+      fail 'Empty name' if @name.nil?
+    end
+
+    def type
+      fail 'Wrong class' if @name_tmp.is_a?(@type)
+    end
 
     def valid?
       validate!

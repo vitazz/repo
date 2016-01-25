@@ -93,9 +93,6 @@ class Train
   end
 
   def each_vagon(&_block)
-    # @vagons.each do |a|
-    #   yield
-    # end
     @vagons.each { |i| yield i }
   end
 

@@ -2,20 +2,20 @@ require_relative 'company_name'
 
 class Train
   include CompanyName
-  extend Accessors
+  # extend Accessors
   include Validations
 
   NUMBER_FORMAT = /^[a-z\d]{3}-*[a-z\d]{2}$/i
 
   attr_reader :train_type, :route, :vagons_count, :current_station,
               :vagons, :vagon_type, :id
-  # attr_accessor :speed, :number
-  attr_accessor_with_history :speed, :number
+  attr_accessor :speed, :number
+  # attr_accessor_with_history :speed, :number
   # strong_attr_acessor :speed, Fixnum
 
-  # validate :speed, :presence
-  # validate :number, :format, NUMBER_FORMAT
-  # validate :speed, :type, Fixnum
+  validate :speed, :presence
+  validate :number, :format, NUMBER_FORMAT
+  validate :speed, :type, Fixnum
 
   @@trains = {}
   @@train_id = 0
