@@ -6,7 +6,6 @@ class RoutesController < ApplicationController
   end
 
   def show
-
   end
 
   def new
@@ -15,7 +14,6 @@ class RoutesController < ApplicationController
 
   def create
     @route = Route.new(route_params)
-
     if @route.save
       redirect_to @route
     else
@@ -24,12 +22,9 @@ class RoutesController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-
-
     if @route.update(route_params)
       redirect_to @route
     else
@@ -38,10 +33,10 @@ class RoutesController < ApplicationController
   end
 
   def destroy
-
     @route.destroy
     redirect_to routes_path
   end
+
 
   private
 
