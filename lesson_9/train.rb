@@ -31,6 +31,7 @@ class Train
     @number = number
     @@train_id += 1
     @id = @@train_id
+
     @@trains[id] = self
     @vagons = []
     validate!

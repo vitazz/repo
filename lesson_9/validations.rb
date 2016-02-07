@@ -12,22 +12,16 @@ module Validations
     # end
 
     def validate(name, *args)
-      validates_name = '@validates'
-      instance_variable_set(validates_name, {}) unless instance_variable_defined?(validates_name)
-      instance_variable_get(validates_name)[name] = *args
+      validates_name = '@@validates'
+      class_variable_set(validates_name, {}) unless class_variable_defined?(validates_name)
+      class_variable_get(validates_name)[name] = *args
     end
   end
 
   module InstanceMethods
-    # def validate!
-    #   self.class.instance_variable_get("@validate_data").each do |name, args|
-    #     @name = instance_variable_get("@#{name}")
-    #     @type = args.last
-    #     send args[0]
-    #   end
-    # end
+
     def validate!
-      self.class.instance_variable_get('@validates').each do |name, args|
+      self.class.class_variable_get('@@validates').each do |name, args|
         send("validate_#{args[0]}", name, *args[1, args.size])
       end
       true
