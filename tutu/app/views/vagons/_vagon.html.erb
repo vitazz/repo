@@ -1,0 +1,6 @@
+<tr>
+  <td><%= vagon.vagon_type %></td>
+  <td><%= link_to 'Показать', vagon %></td>
+  <td><%= link_to 'Редактировать', edit_vagon_path(vagon) %></td>
+  <td><%= link_to 'Удалить', vagon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>

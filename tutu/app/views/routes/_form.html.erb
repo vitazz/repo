@@ -1,0 +1,22 @@
+<%= form_for(@route) do |f| %>
+    <%= render 'common/errors', resource: @route %>
+
+    <div class="field">
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= f.label :railway_station_ids, "Станции в маршруте" %>
+      <%= f.collection_select :railway_station_ids, RailwayStation.all, :id, :title, {}, { multiple: true } %>
+    </div>
+
+    <div class="field">
+      <%= f.label :train, "Поезда на маршруте" %>
+      <%= f.collection_select :train_id, Train.all, :id, :number %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "#{ @route.new_record? ? 'Создать' : 'Изменить' }" %>
+    </div>
+<% end %>
