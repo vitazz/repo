@@ -9,13 +9,13 @@ class VagonsController < ApplicationController
   end
 
   def new
-    @vagons = Vagon.new
+    @vagon = Vagon.new
   end
 
   def create
     @vagon = Vagon.new(vagon_params)
     if @vagon.save
-      redirect_to @vagons
+      redirect_to @vagon
     else
       render :new
     end

@@ -25,10 +25,17 @@
   <strong>Вагоны в поезде:</strong>
   <% if @train.vagons.present? %>
     <ul>
+
+      <p> Плацкартных вагонов: <%= @train.vagons.platskart.count %></p>
+      <p> Купейных вагонов: <%= @train.vagons.kupe.count %></p>
       <% @train.vagons.each do |vagon| %>
-          <li> <%= vagon.vagon_type %></li>
-          <li> <%= vagon.bottom_places %></li>
-          <li> <%= vagon.top_places %></li>
+          <% if vagon.vagon_type == 1 %>
+            Плацкартные нижние места: <%= vagon.bottom_places %>
+            <p>Плацкартные верхние места: <%= vagon.top_places %> </p>
+          <% else %>
+            Купейные нижние места: <%= vagon.bottom_places %>
+            <p>Купейные верхние места: <%= vagon.top_places %> </p>
+          <% end %>
       <% end %>
     </ul>
 <% else %>
