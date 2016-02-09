@@ -7,4 +7,5 @@ class Ticket < ActiveRecord::Base
 
   validates :number, presence: true, uniqueness: true
   validates :seat, presence: true, uniqueness: { scope: :train_id }
+  validates :fio, presence: true
 end
