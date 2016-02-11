@@ -1,8 +1,46 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Number:</strong>
+  <strong>Номер:</strong>
   <%= @train.number %>
+</p>
+
+  <strong>На станции:</strong>
+  <% if @train.current_station.present? %>
+    <%= @train.current_station.title %>
+  <% else %>
+    Не указано
+  <% end %>
+
+<p>
+<strong>На маршруте:</strong>
+<% if @train.route.present? %>
+    <%= @train.route.title %>
+<% else %>
+    Маршрут не назначен
+<% end %>
+</p>
+
+<p>
+  <strong>Вагоны в поезде:</strong>
+  <% if @train.vagons.present? %>
+    <ul>
+
+      <p> Плацкартных вагонов: <%= @train.vagons.common_place.count %></p>
+      <p> Купейных вагонов: <%= @train.vagons.coupe.count %></p>
+      <% @train.vagons.each do |vagon| %>
+          <% if vagon.vagon_type == 1 %>
+            Плацкартные нижние места: <%= vagon.bottom_places %>
+            <p>Плацкартные верхние места: <%= vagon.top_places %> </p>
+          <% else %>
+            Купейные нижние места: <%= vagon.bottom_places %>
+            <p>Купейные верхние места: <%= vagon.top_places %> </p>
+          <% end %>
+      <% end %>
+    </ul>
+<% else %>
+    В поезде нет вагонов
+<% end %>
 </p>
 
 <%= link_to 'Edit', edit_train_path(@train) %> |
