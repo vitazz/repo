@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Список маршрутов</h1>
+<h1>Список билетов</h1>
 
 <table>
   <thead>
@@ -11,10 +11,10 @@
   </thead>
 
   <tbody>
-  <%= render @routes %>
+  <%= render @tickets %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'Новый маршрут', new_route_path %>
+<%= link_to 'Новый билет', new_ticket_path %>
