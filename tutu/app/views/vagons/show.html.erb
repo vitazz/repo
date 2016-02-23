@@ -2,20 +2,9 @@
 
 <p>
   <strong>Тип вагона:</strong>
-  <% if @vagon.vagon_type == 1%>
-    Плацкарт
-  <% else %>
-  Купе
-  <% end %>
+  <%= @vagon.type_name %>
 </p>
-<p>
-  <strong>Нижние места:</strong>
-  <%= @vagon.bottom_places %>
-</p>
-<p>
-  <strong>Верхние места:</strong>
-  <%= @vagon.top_places %>
-</p>
+<%= render "#{@vagon.type.underscore}" %>
 
 <p>
   <strong>Поезд:</strong>

@@ -1,15 +1,28 @@
-<%= form_for(@vagon) do |f| %>
+<%= form_for(@vagon.becomes(Vagon)) do |f| %>
     <%= render 'common/errors', resource: @vagon %>
 
     <div class="field">
-      <%= f.label :vagon_type, "Тип вагона" %>
-      <%= f.text_field :vagon_type %>
+      <%= f.label :type, "Тип вагона" %>
+      <%= f.select(:type, options_for_select([['Плацкартный', EconomyVagon], ['Купейный', CoupeVagon], ['СВ', SvVagon], ['Сидячий', SedentaryVagon]])) %>
+
       <p>
-      <%= f.label :top_places, "Верхние места" %>
-      <%= f.text_field :top_places %>
+        <%= f.label :top_seats, "Верхние места" %>
+        <%= f.text_field :top_seats %>
       </p>
-      <%= f.label :bottom_places, "Нижние места" %>
-      <%= f.text_field :bottom_places %>
+        <%= f.label :bottom_seats, "Нижние места" %>
+        <%= f.text_field :bottom_seats %>
+      <p>
+        <%= f.label :side_bottom_seats, "Нижние боковые места" %>
+        <%= f.text_field :side_bottom_seats %>
+      </p>
+      <p>
+        <%= f.label :side_top_seats, "Верхние боковые места" %>
+        <%= f.text_field :side_top_seats %>
+      </p>
+      <p>
+        <%= f.label :sedentary_seats, "Сидячие места" %>
+        <%= f.text_field :sedentary_seats %>
+      </p>
     </div>
 
     <div class="field">
