@@ -11,12 +11,16 @@ class Vagon < ActiveRecord::Base
   scope :ordered, -> { order(:number) }
   scope :number, -> { :number }
 
-  after_create :set_number
+  before_validation :set_number
 
   protected
 
   def set_number
-    self.number = self.train.vagons.maximum(:number)
+    if self.train.vagons
+      last_num = self.train.vagons.last.number
+    else
+      last_num = 0
+    end
+    self.number = last_num + 1
   end
-
 end

@@ -7,10 +7,10 @@ class Train < ActiveRecord::Base
 
   validates :number, presence: true, uniqueness: true
 
-  # validates :vagons, uniqueness: {
-  # scope: :number,
-  # message: "К поезду не могут быть прикреплены вагоны с одинаковым номером"
-  # }
+  validates :vagons, uniqueness: {
+  scope: :number,
+  message: "К поезду не могут быть прикреплены вагоны с одинаковым номером"
+  }
 
 
 

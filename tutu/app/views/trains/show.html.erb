@@ -29,7 +29,7 @@
       <p> Плацкартных вагонов: <%= @train.vagons.economy.count %></p>
       <p> Купейных вагонов: <%= @train.vagons.coupe.count %></p>
       <% @train.vagons.each do |vagon| %>
-          <li><%= link_to "Вагон №#{vagon.number}", vagon %></li>
+          <li><%= link_to "Вагон №#{vagon.number}", vagon_path(vagon.id) %></li>
           <% end %>
     </ul>
 <% else %>
